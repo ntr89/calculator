@@ -1,2 +1,117 @@
-#main {
+body {
+  background-image: url("/images/dark-honeycomb-bg.jpg");
+  background-size: original;
+}
+.card {
+  background-color: #333333;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  border: 1px solid #777777;
+  color: #cccccc;
+}
+.light {
+  color: #cccccc;
+}
+#output {
+  line-height: 1.4em;
+  background-color: black;
+  color: #10a523;
+  width: 92%;
+  font-size: 2em;
+  padding: 0% 4%;
+  text-align: right;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 6px;
+  grid-area: output;
+}
+#the_calculator {
+  width: 340px;
+  margin: 0 auto 40px;
+  height: 400px;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    "output output output output"
+    "n_C . . n_divide"
+    "n_1 n_2 n_3 n_multiply"
+    "n_4 n_5 n_6 n_minus"
+    "n_7 n_8 n_9 n_plus"
+    ". n_0 n_decimal n_equals";
+}
+.cbutton {
+  font-size: 2em;
+  border-radius: 6px;
+  width: 100%;
+  background-color: #124eb1;
+  line-height: 52px;
+  text-align: center;
+  box-shadow: 0px 3px 0px #4170be;
+  cursor: pointer;
+}
+.cbutton:active {
+  transform: translateY(1px);
+  box-shadow: 0px 2px 0px #4170be;
+}
+.overall-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.n_1 {
+  grid-area: n_1;
+}
+.n_2 {
+  grid-area: n_2;
+}
+.n_3 {
+  grid-area: n_3;
+}
+.n_plus {
+  grid-area: n_plus;
+}
+.n_C {
+  grid-area: n_C;
+}
+.n_4 {
+  grid-area: n_4;
+}
+.n_5 {
+  grid-area: n_5;
+}
+.n_6 {
+  grid-area: n_6;
+}
+.n_minus {
+  grid-area: n_minus;
+}
+.n_7 {
+  grid-area: n_7;
+}
+.n_8 {
+  grid-area: n_8;
+}
+.n_9 {
+  grid-area: n_9;
+}
+.n_multiply {
+  grid-area: n_multiply;
+}
+.n_decimal {
+  grid-area: n_decimal;
+}
+.n_0 {
+  grid-area: n_0;
+}
+.n_equals {
+  grid-area: n_equals;
+}
+.n_divide {
+  grid-area: n_divide;
 }

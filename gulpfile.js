@@ -6,6 +6,7 @@ const cssnano = require("gulp-cssnano");
 const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const concat = require("gulp-concat");
+const imagemin = require("gulp-imagemin");
 const cache = require("gulp-cache");
 const htmlmin = require("gulp-htmlmin");
 const autoprefixer = require("gulp-autoprefixer");
@@ -17,6 +18,7 @@ filesPath = {
   sass: "source/sass/**/*.scss",
   js: "source/js/**/*.js",
   html: "source/**/*.html",
+  images: "./source/images/**/*.+(png|jpg|gif|svg)",
 };
 
 // SASS
@@ -80,6 +82,16 @@ gulp.task("html", function (done) {
   done();
 });
 
+// IMAGES
+
+gulp.task("imagemin", function (done) {
+  return gulp
+    .src(filesPath.images)
+    .pipe(cache(imagemin()))
+    .pipe(gulp.dest("build/images"));
+  done();
+});
+
 // WATCH with browserSync
 gulp.task("watch", function () {
   browserSync.init({
@@ -89,7 +101,7 @@ gulp.task("watch", function () {
   gulp
     .watch(
       [filesPath.sass, filesPath.html, filesPath.js],
-      gulp.parallel(["sass", "javascript"])
+      gulp.parallel(["sass", "javascript", "imagemin", "html"])
     )
     .on("change", browserSync.reload);
 });
@@ -100,7 +112,7 @@ gulp.task("clear-cache", function (done) {
 });
 
 // Serve
-gulp.task("serve", gulp.parallel(["sass", "javascript"]));
+gulp.task("serve", gulp.parallel(["sass", "javascript", "imagemin", "html"]));
 
 // DEFAULT
 gulp.task("default", gulp.series(["serve", "watch"]));
