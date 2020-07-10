@@ -83,7 +83,7 @@ gulp.task("html", function (done) {
 // WATCH with browserSync
 gulp.task("watch", function () {
   browserSync.init({
-    server: "./build",
+    proxy: "calculator.potapov.io",
     projectURL: "calculator.potapov.io",
   });
   gulp
