@@ -39,4 +39,17 @@ for (var i = 0; i < mybtn.length; i++) {
     myOutput.innerHTML = myCal;
   });
 }
-runOnKeys(() => alert("Hello!"), "KeyQ", "KeyW");
+jQuery(document).keypress(function (e) {
+  var key = e.keyCode;
+  console.log("the key pressed is " + key);
+  if (key >= 48 && key <= 57) {
+    var actionNumber = key - 48;
+    console.log("You pressed " + (key - 48));
+    myOutput.innerHTML = myCal + actionNumber;
+  } else if (key == 47) {
+    myOutput.innerHTML = myCal + "/";
+  } else if (key == 46) {
+    console.log(".");
+  } else {
+  }
+});
