@@ -23,24 +23,39 @@ function calcInput(e) {
     myCom = false;
     myCal = "";
   }
-  if (key == 47) {
-    myValue = "/";
-    myCal = myCal + myValue;
-  }
-  if (myValue == "+" || myValue == "-" || myValue == "*" || myValue == "/") {
-    if (operatorPresent) {
-      myCal = eval(myCal);
-    }
-    operatorPresent = true;
+  if (key == 47 || myValue == "/") {
     console.log(myValue);
-    if (mySwitch) {
-      mySwitch = false;
-      if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) > -1) {
-        myCal = myCal.substring(0, myCal.length - 1);
+    // if myValue is assigned
+    if (myValue) {
+      myValue = "/";
+      if (operatorPresent) {
+        myCal = eval(myCal);
       }
+      operatorPresent = true;
+    } else {
+      myValue = "/";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+      myCal = myCal + myValue;
     }
-    mySwitch = true;
+    //else if myValue is not asigned
   }
+  // if (myValue == "+" || myValue == "-" || myValue == "*" || myValue == "/") {
+  //   if (operatorPresent) {
+  //     myCal = eval(myCal);
+  //   }
+  //   operatorPresent = true;
+  //   console.log(myValue);
+  //   if (mySwitch) {
+  //     mySwitch = false;
+  //     if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) > -1) {
+  //       myCal = myCal.substring(0, myCal.length - 1);
+  //     }
+  //   }
+  //   mySwitch = true;
+  // }
   if (myValue == "=" || key == 13) {
     myValue = "";
     if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
