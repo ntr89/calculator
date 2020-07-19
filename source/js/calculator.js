@@ -18,7 +18,6 @@ function calcInput(e) {
   var key = e.keyCode;
   console.log("the key pressed is " + key);
   var myValue = this.innerHTML;
-  console.log(this);
   if (myCom || myCal == "0") {
     myCom = false;
     myCal = "";
@@ -28,8 +27,6 @@ function calcInput(e) {
       mySwitch = false;
       if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) > -1) {
         myCal = myCal.substring(0, myCal.length - 1);
-      } else {
-        myCal = eval(myCal);
       }
     }
     mySwitch = true;
@@ -39,11 +36,22 @@ function calcInput(e) {
     if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
       myCal = eval(myCal);
     }
-  } else if (myValue == "C") {
+  } else if (myValue == "C" || key == 99) {
     myCal = 0;
     myCom = true;
   } else if (myOutput.innerHTML.indexOf(".") > -1 && myValue == ".") {
     myValue = "";
+  } else if (key == 46) {
+    if (myCal.endsWith(".")) {
+      console.log("the string ends with .");
+    } else {
+      myCal = myCal + ".";
+      console.log(myCal);
+    }
+  } else if (key >= 48 && key <= 57) {
+    var actionNumber = key - 48;
+    myCal = myCal + actionNumber;
+  } else if (key) {
   } else {
     myCal = myCal + myValue;
   }
