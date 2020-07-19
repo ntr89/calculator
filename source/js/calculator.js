@@ -11,12 +11,12 @@ var myOpe = ["+", "-", "*", "/"];
 for (var i = 0; i < mybtn.length; i++) {
   mybtn[i].addEventListener("click", calcInput);
 }
-mybtnEquals.addEventListener("click", runCalculation);
 function detectKey() {}
 jQuery(document).keypress(calcInput);
 // FUNCTIONS (INPUT, CALCULATE, STORE)
 function calcInput(e) {
   var key = e.keyCode;
+  console.log("the key pressed is " + key);
   var myValue = this.innerHTML;
   console.log(this);
   if (myCom || myCal == "0") {
@@ -34,7 +34,7 @@ function calcInput(e) {
     }
     mySwitch = true;
   }
-  if (myValue == "=" || key == 47) {
+  if (myValue == "=" || key == 13) {
     myValue = "";
     if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
       myCal = eval(myCal);
@@ -50,9 +50,17 @@ function calcInput(e) {
   myOutput.innerHTML = myCal;
 }
 
-function runCalculation() {
-  myCal = myOutput.innerHTML;
-  if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
-    myCal = eval(myCal);
-  }
-}
+// function (e) {
+//   var key = e.keyCode;
+//   console.log("the key pressed is " + key);
+//   if (key >= 48 && key <= 57) {
+//     var actionNumber = key - 48;
+//     console.log("You pressed " + (key - 48));
+//     myOutput.innerHTML = myCal + actionNumber;
+//   } else if (key == 47) {
+//     myOutput.innerHTML = myCal + "/";
+//   } else if (key == 46) {
+//     console.log(".");
+//   } else {
+//   }
+// }
