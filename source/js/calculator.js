@@ -68,6 +68,7 @@ function calcInput(e) {
     console.log(myValue);
     // if myValue is assigned
     if (myValue) {
+      console.log("buttclick" + myValue);
       myValue = "+";
       if (operatorPresent) {
         myCal = eval(myCal);
