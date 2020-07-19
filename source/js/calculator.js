@@ -62,6 +62,46 @@ function calcInput(e) {
       myCal = myCal + myValue;
     }
   }
+
+  // ADD
+  if (key == 43 || myValue == "+") {
+    console.log(myValue);
+    // if myValue is assigned
+    if (myValue) {
+      myValue = "+";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+    } else {
+      myValue = "+";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+      myCal = myCal + myValue;
+    }
+  }
+
+  // SUBTRACT
+  if (key == 45 || myValue == "-") {
+    console.log(myValue);
+    // if myValue is assigned
+    if (myValue) {
+      myValue = "-";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+    } else {
+      myValue = "-";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+      myCal = myCal + myValue;
+    }
+  }
   // if (myValue == "+" || myValue == "-" || myValue == "*" || myValue == "/") {
   //   if (operatorPresent) {
   //     myCal = eval(myCal);
