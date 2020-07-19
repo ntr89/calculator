@@ -17,12 +17,14 @@ jQuery(document).keypress(calcInput);
 // FUNCTIONS (INPUT, CALCULATE, STORE)
 function calcInput(e) {
   var key = e.keyCode;
-  // console.log("the key pressed is " + key);
+  console.log("the key pressed is " + key);
   var myValue = this.innerHTML;
   if (myCom || myCal == "0") {
     myCom = false;
     myCal = "";
   }
+
+  // DIVISION
   if (key == 47 || myValue == "/") {
     console.log(myValue);
     // if myValue is assigned
@@ -40,7 +42,25 @@ function calcInput(e) {
       operatorPresent = true;
       myCal = myCal + myValue;
     }
-    //else if myValue is not asigned
+  }
+  // MULTIPLY
+  if (key == 42 || myValue == "*") {
+    console.log(myValue);
+    // if myValue is assigned
+    if (myValue) {
+      myValue = "*";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+    } else {
+      myValue = "*";
+      if (operatorPresent) {
+        myCal = eval(myCal);
+      }
+      operatorPresent = true;
+      myCal = myCal + myValue;
+    }
   }
   // if (myValue == "+" || myValue == "-" || myValue == "*" || myValue == "/") {
   //   if (operatorPresent) {
@@ -57,9 +77,14 @@ function calcInput(e) {
   //   mySwitch = true;
   // }
   if (myValue == "=" || key == 13) {
-    myValue = "";
-    if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
-      myCal = eval(myCal);
+    console.log(myCal);
+    if (!myCal == "") {
+      myValue = "";
+      if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) == -1) {
+        myCal = eval(myCal);
+      }
+    } else {
+      myCal = "0";
     }
   } else if (myValue == "C" || key == 99) {
     myCal = 0;
