@@ -5,6 +5,7 @@ var myCal = "";
 var myCom = false;
 var mySwitch = false;
 var myOpe = ["+", "-", "*", "/"];
+var operatorPresent = false;
 //console.log(mybtn);
 
 // EVENT LISTENERS - BUTTONS AND KEYBOARD
@@ -16,13 +17,22 @@ jQuery(document).keypress(calcInput);
 // FUNCTIONS (INPUT, CALCULATE, STORE)
 function calcInput(e) {
   var key = e.keyCode;
-  console.log("the key pressed is " + key);
+  // console.log("the key pressed is " + key);
   var myValue = this.innerHTML;
   if (myCom || myCal == "0") {
     myCom = false;
     myCal = "";
   }
+  if (key == 47) {
+    myValue = "/";
+    myCal = myCal + myValue;
+  }
   if (myValue == "+" || myValue == "-" || myValue == "*" || myValue == "/") {
+    if (operatorPresent) {
+      myCal = eval(myCal);
+    }
+    operatorPresent = true;
+    console.log(myValue);
     if (mySwitch) {
       mySwitch = false;
       if (myOpe.indexOf(myOutput.innerHTML.slice(-1)) > -1) {
