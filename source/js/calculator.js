@@ -69,17 +69,30 @@ function calcInput(e) {
     // if myValue is assigned
     if (myValue) {
       console.log("buttclick" + myValue);
+      console.log("1: " + myCal);
       myValue = "+";
       if (operatorPresent) {
+        console.log("2: " + myCal);
         myCal = eval(myCal);
+        console.log("operator present");
       }
       operatorPresent = true;
     } else {
+      console.log("3: " + myCal);
+      console.log("myValue not defined" + myValue);
       myValue = "+";
       if (operatorPresent) {
+        console.log("4: " + myCal);
         myCal = eval(myCal);
+        console.log("operator present with adding logic");
+      } else {
+        console.log("5: " + myCal);
       }
       operatorPresent = true;
+
+      console.log("6: " + myCal);
+
+      console.log("7: " + myValue);
       myCal = myCal + myValue;
     }
   }
@@ -127,6 +140,8 @@ function calcInput(e) {
     } else {
       myCal = "0";
     }
+    myCal = String(myCal);
+    console.log(myCal);
   } else if (myValue == "C" || key == 99) {
     myCal = 0;
     myCom = true;
@@ -141,25 +156,13 @@ function calcInput(e) {
     }
   } else if (key >= 48 && key <= 57) {
     var actionNumber = key - 48;
+    console.log(myCal);
     myCal = myCal + actionNumber;
+    console.log("outputter " + actionNumber);
   } else if (key) {
   } else {
+    console.log("outputter");
     myCal = myCal + myValue;
   }
   myOutput.innerHTML = myCal;
 }
-
-// function (e) {
-//   var key = e.keyCode;
-//   console.log("the key pressed is " + key);
-//   if (key >= 48 && key <= 57) {
-//     var actionNumber = key - 48;
-//     console.log("You pressed " + (key - 48));
-//     myOutput.innerHTML = myCal + actionNumber;
-//   } else if (key == 47) {
-//     myOutput.innerHTML = myCal + "/";
-//   } else if (key == 46) {
-//     console.log(".");
-//   } else {
-//   }
-// }
