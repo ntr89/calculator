@@ -37,11 +37,11 @@ body {
   grid-row-gap: 10px;
   grid-template-areas:
     "output output output output"
-    "n_C . . n_divide"
+    "n_C n_parenthesis n_percentage n_divide"
     "n_1 n_2 n_3 n_multiply"
     "n_4 n_5 n_6 n_minus"
     "n_7 n_8 n_9 n_plus"
-    ". n_0 n_decimal n_equals";
+    "n_reversal n_0 n_decimal n_equals";
 }
 .cbutton {
   font-size: 2em;
@@ -114,4 +114,18 @@ body {
 }
 .n_divide {
   grid-area: n_divide;
+}
+.n_parenthesis {
+  grid-area: n_parenthesis;
+}
+.n_percentage {
+  grid-area: n_percentage;
+}
+.n_reversal {
+  grid-area: n_reversal;
+}
+.disabled {
+  background-color: hsl(0, 0%, 17%);
+  box-shadow: 0px 3px 0px #777777;
+  cursor: not-allowed;
 }
